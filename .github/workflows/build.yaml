@@ -29,7 +29,7 @@ jobs:
 
       - uses: docker/build-push-action@v2
         with:
-          platforms: linux/amd64,linux/386,linux/arm64,linux/arm/v7
+          platforms: linux/amd64,linux/arm64
           build-args: |
             URLWATCH_VERSION=${{ env.URLWATCH_VERSION }}
           tags: |
