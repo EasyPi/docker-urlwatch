@@ -1,0 +1,70 @@
+name: Docker Build Images
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - README.md
+
+env:
+  IMAGE_NAME: 'easypi/urlwatch'
+  URLWATCH_VERSION: '2.24'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: docker/setup-qemu-action@v1
+
+      - uses: docker/setup-buildx-action@v1
+
+      - uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - uses: docker/build-push-action@v2
+        with:
+          platforms: linux/amd64,linux/386,linux/arm64,linux/arm/v7
+          build-args: |
+            URLWATCH_VERSION=${{ env.URLWATCH_VERSION }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ env.URLWATCH_VERSION }}
+            ${{ env.IMAGE_NAME }}:latest
+          push: true
+
+      - if: ${{ always() }}
+        uses: slackapi/slack-github-action@v1.16.0
+        with:
+          channel-id: github
+          payload: |
+            {
+              "attachments": [
+                {
+                  "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
+                  "title": "${{ github.repository }}",
+                  "title_link": "https://github.com/${{ github.repository }}",
+                  "text": "docker build image result",
+                  "fields": [
+                    {
+                      "title": "Image",
+                      "value": "<https://hub.docker.com/r/${{ env.IMAGE_NAME }}|${{ env.IMAGE_NAME }}>",
+                      "short": true
+                    },
+                    {
+                      "title": "Status",
+                      "value": "${{ job.status }}",
+                      "short": true
+                    }
+                  ],
+                  "footer": "Github Actions",
+                  "footer_icon": "https://github.githubassets.com/favicon.ico"
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

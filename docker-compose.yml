@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  urlwatch:
+    image: vimagick/urlwatch
+    volumes:
+      - ./data:/root/.urlwatch
+    environment:
+      - EDITOR=/usr/bin/vi
+    restart: unless-stopped
