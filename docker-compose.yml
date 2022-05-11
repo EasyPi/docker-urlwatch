@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   urlwatch:
-    image: vimagick/urlwatch
+    image: easypi/urlwatch
     volumes:
       - ./data:/root/.urlwatch
     environment:
