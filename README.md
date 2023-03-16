@@ -3,7 +3,7 @@ urlwatch
 
 [![](https://github.com/easypi/docker-urlwatch/actions/workflows/build.yaml/badge.svg)](https://github.com/EasyPi/docker-urlwatch)
 
-[![](http://dockeri.co/image/easypi/urlwatch)](https://hub.docker.com/r/easypi/urlwatch)
+[![](http://dockeri.co/image/vimagick/urlwatch)](https://hub.docker.com/r/vimagick/urlwatch)
 
 [urlwatch][1] is a tool for monitoring webpages for updates.
 
@@ -13,7 +13,7 @@ urlwatch
 version: "3.8"
 services:
   urlwatch:
-    image: easypi/urlwatch
+    image: vimagick/urlwatch
     volumes:
       - ./data:/root/.urlwatch
     environment:
@@ -80,7 +80,7 @@ See the [crontab manpage for details on format](https://man7.org/linux/man-pages
 version: "3.8"
 services:
   urlwatch:
-    image: easypi/urlwatch
+    image: vimagick/urlwatch
     volumes:
       - ./data:/root/.urlwatch
       - ./data/crontab:/etc/crontabs/root
