@@ -29,6 +29,8 @@ RUN set -xe \
                                 chump             \
                                 cssbeautifier     \
                                 cssselect         \
+                                html2text         \
+                                jq                \
                                 jsbeautifier      \
                                 keyring           \
                                 keyrings.alt      \
