@@ -40,6 +40,7 @@ RUN set -xe \
                                 minidb            \
                                 pushbullet.py     \
                                 pyppeteer         \
+                                pytz              \
                                 pyyaml            \
                                 requests          \
     && pip3 install urlwatch==${URLWATCH_VERSION} \
