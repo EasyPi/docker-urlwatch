@@ -10,7 +10,7 @@ on:
 
 env:
   PLATFORMS: 'linux/amd64,linux/arm64'
-  IMAGE_NAME: 'vimagick/urlwatch'
+  IMAGE_NAME: 'easypi/urlwatch'
   URLWATCH_VERSION: '2.28'
 
 jobs:
