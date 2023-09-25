@@ -43,6 +43,21 @@ filter:
 - shellpipe: 'jq -r .tag_name'
 - strip:
 
+---
+
+name: easypi
+url: https://www.nslookup.io/api/v1/records
+method: POST
+headers:
+  Content-Type: application/json
+data: '{"domain":"easypi.duckdns.org","dnsServer":"google"}'
+filter:
+- jq:
+    query: '.records.a.response.answer[0].ipInfo.query'
+- re.sub:
+    pattern: '"'
+    repl: ''
+
 ...
 ```
 
