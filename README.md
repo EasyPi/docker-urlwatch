@@ -47,6 +47,7 @@ filter:
 
 name: easypi
 url: https://www.nslookup.io/api/v1/records
+user_visible_url: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#google
 method: POST
 headers:
   Content-Type: application/json
@@ -71,6 +72,7 @@ Successfully sent message to Slack
 >>> urlwatch --list
 1: https://github.com/thp/urlwatch/releases/latest
 2: https://github.com/shadowsocks/shadowsocks-libev/releases/latest
+3: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#google
 >>> urlwatch --test-filter 2
 v3.3.5
 >>> exit
