@@ -1,0 +1,12 @@
+job_defaults:
+  url:
+    ignore_connection_errors: true
+    ignore_http_error_codes: 4xx, 5xx
+  treat_new_as_changed: true
+
+report:
+  text:
+    footer: false
+  slack:
+    webhook_url: https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ
+    enabled: true

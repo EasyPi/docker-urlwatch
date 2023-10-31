@@ -10,6 +10,7 @@ ARG URLWATCH_VERSION
 RUN set -xe \
     && apk add --no-cache ca-certificates \
                           bash            \
+                          bind-tools      \
                           build-base      \
                           curl            \
                           jq              \

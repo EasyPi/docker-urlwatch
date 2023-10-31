@@ -78,8 +78,6 @@ v3.3.5
 >>> exit
 ```
 
-[1]: https://thp.io/2008/urlwatch/
-
 ## customizing cron schedule
 
 ### Create a crontab file
@@ -103,3 +101,5 @@ services:
       - ./data/crontab:/etc/crontabs/root
     restart: unless-stopped
 ```
+
+[1]: https://github.com/thp/urlwatch
