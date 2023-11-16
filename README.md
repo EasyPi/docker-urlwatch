@@ -67,7 +67,7 @@ filter:
 ```bash
 $ docker-compose up -d
 $ docker-compose exec urlwatch sh
->>> urlwatch --test-slack
+>>> urlwatch --test-reporter slack
 Successfully sent message to Slack
 >>> urlwatch --list
 1: https://github.com/thp/urlwatch/releases/latest
