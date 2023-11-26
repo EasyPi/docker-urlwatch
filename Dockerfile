@@ -22,6 +22,7 @@ RUN set -xe \
                           openssl-dev     \
                           python3         \
                           python3-dev     \
+                          tzdata          \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip3 install --no-binary lxml              \
                                 aioxmpp           \
