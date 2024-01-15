@@ -47,11 +47,11 @@ filter:
 
 name: easypi
 url: https://www.nslookup.io/api/v1/records
-user_visible_url: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#google
+user_visible_url: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#authoritative
 method: POST
 headers:
   Content-Type: application/json
-data: '{"domain":"easypi.duckdns.org","dnsServer":"google"}'
+data: '{"domain":"easypi.duckdns.org","dnsServer":"authoritative"}'
 filter:
 - jq:
     query: '.records.a.response.answer[0].ipInfo.query'
@@ -72,7 +72,7 @@ Successfully sent message to Slack
 >>> urlwatch --list
 1: https://github.com/thp/urlwatch/releases/latest
 2: https://github.com/shadowsocks/shadowsocks-libev/releases/latest
-3: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#google
+3: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#authoritative
 >>> urlwatch --test-filter 2
 v3.3.5
 >>> exit
