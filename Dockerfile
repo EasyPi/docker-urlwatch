@@ -8,21 +8,22 @@ MAINTAINER EasyPi Software Foundation
 ARG URLWATCH_VERSION
 
 RUN set -xe \
-    && apk add --no-cache ca-certificates \
-                          bash            \
-                          bind-tools      \
-                          build-base      \
-                          curl            \
-                          jq              \
-                          libffi-dev      \
-                          libxml2         \
-                          libxml2-dev     \
-                          libxslt         \
-                          libxslt-dev     \
-                          openssl-dev     \
-                          python3         \
-                          python3-dev     \
-                          tzdata          \
+    && apk add --no-cache ca-certificates   \
+                          bash              \
+                          bind-tools        \
+                          build-base        \
+                          curl              \
+                          jq                \
+                          libffi-dev        \
+                          libxml2           \
+                          libxml2-dev       \
+                          libxslt           \
+                          libxslt-dev       \
+                          mosquitto-clients \
+                          openssl-dev       \
+                          python3           \
+                          python3-dev       \
+                          tzdata            \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip3 install --no-binary lxml              \
                                 aioxmpp           \
