@@ -2,7 +2,7 @@
 # Dockerfile for urlwatch
 #
 
-FROM alpine:3.18
+FROM alpine:3.20
 MAINTAINER EasyPi Software Foundation
 
 ARG URLWATCH_VERSION
