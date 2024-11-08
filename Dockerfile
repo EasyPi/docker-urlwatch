@@ -24,6 +24,7 @@ RUN set -xe \
                           python3           \
                           python3-dev       \
                           tzdata            \
+    && rm -vf /usr/lib/python3.12/EXTERNALLY-MANAGED \
     && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
     && pip3 install --no-binary lxml              \
                                 aioxmpp           \
@@ -46,7 +47,7 @@ RUN set -xe \
                                 pytz              \
                                 pyyaml            \
                                 requests          \
-    && sed -i '/if "proxies" not in kwargs:$/s//if True:/' /usr/lib/python3.11/site-packages/requests/sessions.py \
+    && sed -i '/if "proxies" not in kwargs:$/s//if True:/' /usr/lib/python3.12/site-packages/requests/sessions.py \
     && pip3 install urlwatch==${URLWATCH_VERSION} \
     && apk del build-base  \
                libffi-dev  \
