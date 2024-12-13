@@ -21,11 +21,11 @@ RUN set -xe \
                           libxslt-dev       \
                           mosquitto-clients \
                           openssl-dev       \
+                          py3-pip           \
                           python3           \
                           python3-dev       \
                           tzdata            \
-    && rm -vf /usr/lib/python3.12/EXTERNALLY-MANAGED \
-    && curl -sSL https://bootstrap.pypa.io/get-pip.py | python3 \
+    && pip3 config set global.break-system-packages true \
     && pip3 install --no-binary lxml              \
                                 aioxmpp           \
                                 appdirs           \
