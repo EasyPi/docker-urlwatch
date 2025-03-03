@@ -41,31 +41,19 @@ jobs:
       - if: ${{ always() }}
         uses: slackapi/slack-github-action@v2.0.0
         with:
-          channel-id: github
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
           payload: |
-            {
-              "attachments": [
-                {
-                  "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
-                  "title": "${{ github.repository }}",
-                  "title_link": "https://github.com/${{ github.repository }}",
-                  "text": "docker build image result",
-                  "fields": [
-                    {
-                      "title": "Image",
-                      "value": "<https://hub.docker.com/r/${{ env.IMAGE_NAME }}|${{ env.IMAGE_NAME }}>",
-                      "short": true
-                    },
-                    {
-                      "title": "Status",
-                      "value": "${{ job.status }}",
-                      "short": true
-                    }
-                  ],
-                  "footer": "Github Actions",
-                  "footer_icon": "https://github.githubassets.com/favicon.ico"
-                }
-              ]
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            channel: github
+            text: "docker build image result: <https://github.com/${{ github.repository }}|${{ github.repository }}>"
+            attachments:
+            - color: "${{ job.status == 'success' && 'good' || 'danger' }}"
+              fields:
+              - title: "Image"
+                short: true
+                value: "<https://hub.docker.com/r/${{ env.IMAGE_NAME }}|${{ env.IMAGE_NAME }}>"
+              - title: "Status"
+                short: true
+                value: "${{ job.status }}"
+              footer: "Github Actions"
+              footer_icon: "https://github.githubassets.com/favicon.ico"
