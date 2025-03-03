@@ -15,19 +15,15 @@ RUN set -xe \
                           curl              \
                           jq                \
                           libffi-dev        \
-                          libxml2           \
-                          libxml2-dev       \
-                          libxslt           \
-                          libxslt-dev       \
                           mosquitto-clients \
                           openssl-dev       \
+                          py3-lxml          \
                           py3-pip           \
                           python3           \
                           python3-dev       \
                           tzdata            \
     && pip3 config set global.break-system-packages true \
-    && pip3 install --no-binary lxml              \
-                                aioxmpp           \
+    && pip3 install --no-binary aioxmpp           \
                                 appdirs           \
                                 beautifulsoup4    \
                                 chump             \
@@ -38,7 +34,6 @@ RUN set -xe \
                                 jsbeautifier      \
                                 keyring           \
                                 keyrings.alt      \
-                                lxml              \
                                 markdown2         \
                                 matrix_client     \
                                 minidb            \
@@ -51,8 +46,6 @@ RUN set -xe \
     && pip3 install urlwatch==${URLWATCH_VERSION} \
     && apk del build-base  \
                libffi-dev  \
-               libxml2-dev \
-               libxslt-dev \
                openssl-dev \
                python3-dev \
     && echo '*/30 * * * * cd /root/.urlwatch && urlwatch --urls urls.yaml --config urlwatch.yaml --hooks hooks.py --cache cache.db' | crontab -
