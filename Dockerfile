@@ -2,7 +2,7 @@
 # Dockerfile for urlwatch
 #
 
-FROM alpine:3.21
+FROM alpine:3.24
 MAINTAINER EasyPi Software Foundation
 
 ARG URLWATCH_VERSION
@@ -42,7 +42,7 @@ RUN set -xe \
                                 pytz              \
                                 pyyaml            \
                                 requests          \
-    && sed -i '/if "proxies" not in kwargs:$/s//if True:/' /usr/lib/python3.12/site-packages/requests/sessions.py \
+    && sed -i '/if "proxies" not in kwargs:$/s//if True:/' /usr/lib/python3.14/site-packages/requests/sessions.py \
     && pip3 install urlwatch==${URLWATCH_VERSION} \
     && apk del build-base  \
                libffi-dev  \
