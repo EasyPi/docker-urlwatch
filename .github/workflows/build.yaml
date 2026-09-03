@@ -1,4 +1,4 @@
-name: Docker Build Images
+name: Build urlwatch
 
 on:
   workflow_dispatch:
@@ -9,51 +9,19 @@ on:
       - README.md
 
 env:
-  PLATFORMS: 'linux/amd64,linux/arm64'
-  IMAGE_NAME: 'easypi/urlwatch'
-  URLWATCH_VERSION: '2.29'
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: docker/setup-qemu-action@v3
-
-      - uses: docker/setup-buildx-action@v3
-
-      - uses: docker/login-action@v3
+      - uses: actions/checkout@v7
+      - name: Docker Build and Notify
+        uses: vimagick/dockerfiles/.github/actions/docker-build-notify@master
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - uses: docker/build-push-action@v6
-        with:
-          platforms: ${{ env.PLATFORMS }}
-          build-args: |
-            URLWATCH_VERSION=${{ env.URLWATCH_VERSION }}
-          tags: |
-            ${{ env.IMAGE_NAME }}:${{ env.URLWATCH_VERSION }}
-            ${{ env.IMAGE_NAME }}:latest
-          push: true
-
-      - if: ${{ always() }}
-        uses: slackapi/slack-github-action@v2.0.0
-        with:
-          method: chat.postMessage
-          token: ${{ secrets.SLACK_BOT_TOKEN }}
-          payload: |
-            channel: github
-            text: "docker build image result: <https://github.com/${{ github.repository }}|${{ github.repository }}>"
-            attachments:
-            - color: "${{ job.status == 'success' && 'good' || 'danger' }}"
-              fields:
-              - title: "Image"
-                short: true
-                value: "<https://hub.docker.com/r/${{ env.IMAGE_NAME }}|${{ env.IMAGE_NAME }}>"
-              - title: "Status"
-                short: true
-                value: "${{ job.status }}"
-              footer: "Github Actions"
-              footer_icon: "https://github.githubassets.com/favicon.ico"
+          context: '.'
+          image_name: 'easypi/urlwatch'
+          version_arg: 'URLWATCH_VERSION'
+          version_value: '2.29'
