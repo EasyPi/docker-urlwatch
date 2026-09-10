@@ -1,16 +1,15 @@
 urlwatch
 ========
 
-[![](https://github.com/easypi/docker-urlwatch/actions/workflows/build.yaml/badge.svg)](https://github.com/EasyPi/docker-urlwatch)
-
-[![](http://dockeri.co/image/easypi/urlwatch)](https://hub.docker.com/r/easypi/urlwatch)
+[![Build](https://img.shields.io/github/actions/workflow/status/easypi/docker-urlwatch/build.yaml?branch=master&label=build-urlwatch)](https://github.com/EasyPi/docker-urlwatch)
+[![Stars](https://img.shields.io/docker/stars/easypi/urlwatch?label=docker-stars-urlwatch)](https://hub.docker.com/r/easypi/urlwatch)
+[![Latest](https://img.shields.io/github/v/tag/thp/urlwatch?label=latest)][1]
 
 [urlwatch][1] is a tool for monitoring webpages for updates.
 
 ## docker-compose.yml
 
 ```yaml
-version: "3.8"
 services:
   urlwatch:
     image: easypi/urlwatch
@@ -74,7 +73,7 @@ Successfully sent message to Slack
 2: https://github.com/shadowsocks/shadowsocks-libev/releases/latest
 3: https://www.nslookup.io/domains/easypi.duckdns.org/dns-records/#authoritative
 >>> urlwatch --test-filter 2
-v3.3.5
+v3.3.6
 >>> exit
 ```
 
@@ -82,7 +81,7 @@ v3.3.5
 
 ### Create a crontab file
 
-```
+```bash
 */30 * * * * cd /root/.urlwatch && urlwatch --urls urls.yaml --config urlwatch.yaml --hooks hooks.py --cache cache.db
 */15 * * * * cd /root/.urlwatch && urlwatch --urls urls-every-15m.yaml --config urlwatch.yaml --hooks hooks.py --cache cache.db
 ```

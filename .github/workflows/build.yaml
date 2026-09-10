@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - Dockerfile
+      - .github/workflows/build.yaml
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
