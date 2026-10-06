@@ -1,9 +1,9 @@
 urlwatch
 ========
 
-[![Build](https://img.shields.io/github/actions/workflow/status/easypi/docker-urlwatch/build.yaml?branch=master&label=build-urlwatch)](https://github.com/EasyPi/docker-urlwatch)
-[![Stars](https://img.shields.io/docker/stars/easypi/urlwatch?label=docker-stars-urlwatch)](https://hub.docker.com/r/easypi/urlwatch)
-[![Latest](https://img.shields.io/github/v/tag/thp/urlwatch?label=latest)][1]
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/easypi/docker-urlwatch/build.yaml?logo=github)](https://github.com/EasyPi/docker-urlwatch)
+[![Docker Image Version](https://img.shields.io/docker/v/easypi/urlwatch?logo=docker&label=easypi%2Furlwatch)](https://hub.docker.com/r/easypi/urlwatch)
+[![urlwatch](https://img.shields.io/github/v/tag/thp/urlwatch?logo=github&label=urlwatch)][1]
 
 [urlwatch][1] is a tool for monitoring webpages for updates.
 
